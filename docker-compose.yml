@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+    image: mongo
+    ports:
+      - "37017:27017"
+    networks:
+      - sk
+  orders:
+    image: sk/mongo-example
+    ports:
+      - "9090:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=production
+      - DB_HOST=db
+      - DB_NAME=resultsDb
+      - DB_PORT=27017
+    links:
+      - "db:db"
+    depends_on:
+      - db
+    networks:
+      - sk
+
+networks:
+  sk:
