@@ -1,16 +1,16 @@
-#Spring boot mongo example
+# Spring boot mongo example
 
 ## Use mongo with spring boot
 
-###Basic
+### Basic
 
 To provide basic functionality(CRUD,pagging,sorting,filtering,...) extend MongoRepository.
 
-###Custom repository
+### Custom repository
 
+Best way to provide complex queries is to create custom repository(example: CustomOrderRepository).
 
-
-###Cascade save
+### Cascade save
 
 To provide cascade save functionality we need:
 

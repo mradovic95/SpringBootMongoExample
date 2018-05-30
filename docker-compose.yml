@@ -10,7 +10,7 @@ services:
   orders:
     image: sk/mongo-example
     ports:
-      - "9090:8080"
+      - "9091:8081"
     environment:
       - SPRING_PROFILES_ACTIVE=production
       - DB_HOST=db
