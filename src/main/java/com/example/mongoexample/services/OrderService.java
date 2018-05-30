@@ -5,6 +5,7 @@ import com.example.mongoexample.repositories.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -42,6 +43,11 @@ public class OrderService {
     public void update(Order order) {
         log.info("Updating order: {}", order);
         orderRepository.save(order);
+    }
+
+    public void bestCustomers() {
+        log.info("Getting best customers");
+        orderRepository.bestCustomers();
     }
 
 }

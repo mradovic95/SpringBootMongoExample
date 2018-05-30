@@ -39,6 +39,12 @@ public class OrderController {
         return new ResponseEntity<>(orderService.getAll(pageable), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/best")
+    public ResponseEntity<?> getAll() {
+        orderService.bestCustomers();
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
     @ApiOperation(value = "Get single Order by id", notes = "Some notes")
     @GetMapping(value = "/{id}")
     public ResponseEntity<Order> getById(@PathVariable String id) {
