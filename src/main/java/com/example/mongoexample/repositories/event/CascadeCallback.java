@@ -1,7 +1,6 @@
 package com.example.mongoexample.repositories.event;
 
 import com.example.mongoexample.annotations.CascadeSave;
-import com.example.mongoexample.domain.Product;
 import lombok.Data;
 import org.springframework.data.mapping.MappingException;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -44,7 +43,6 @@ public class CascadeCallback implements ReflectionUtils.FieldCallback {
     }
 
     private void checkNSave(Object fieldValue) {
-        System.out.println(fieldValue);
         FieldCallback callback = new FieldCallback();
         ReflectionUtils.doWithFields(fieldValue.getClass(), callback);
 
@@ -52,9 +50,7 @@ public class CascadeCallback implements ReflectionUtils.FieldCallback {
             throw new MappingException("Oops, something went wrong. Child doesn't have @Id?");
         }
 
-        Product product = mongoOperations.findById(((Product) fieldValue).getId(), Product.class);
-
-        if (product == null) mongoOperations.save(fieldValue);
+        mongoOperations.save(fieldValue);
     }
 
 }
